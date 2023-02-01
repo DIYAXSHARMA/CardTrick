@@ -28,6 +28,7 @@ public class CardTrick {
             
             int b = (int) (Math.random() * 3);
             card.setSuit(card.SUITS[b]);
+            card.setValue(generator.nextInt(13)+1);
             //card.setValue(insert call to random number generator here)
             // 
             //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
@@ -56,6 +57,21 @@ public class CardTrick {
         
         printInfo();
         
+        System.out.println("Enter card value:");
+        int val= input.nextInt();
+        System.out.println("Enter suit:");
+        String suit=input.next();
+        Card key=new Card();
+        key.setValue(val);
+        key.setSuit(suit);
+        
+        
+        key.setValue(11);
+        key.setSuit("Hearts");
+        
+       
+        
+        
         // Hint: You can ask for values 1 to 10, and then
         //       11 for jack, 12 for queen, etc. (remember arrays are 0-based though)
         //       1 for Hearts, 2 for Diamonds, etc. (remember arrays are 0-based though)
@@ -69,7 +85,7 @@ public class CardTrick {
     /**
      * A simple method to print out personal information. Follow the instructions to 
      * replace this information with your own.
-     * @author Paul Bonenfant Jan 2022
+     * @author kauishma Feb 1,2023
      */
     private static void printInfo() {
     
