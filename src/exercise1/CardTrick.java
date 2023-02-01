@@ -1,57 +1,67 @@
 package exercise1;
 
+
 /**
- * A class that fills a hand of 7 cards with random Card Objects and then asks the user to pick a card.
- * It then searches the array of cards for the match to the user's card. 
- * To be used as starting code in Exercise
- *
+ * A class that models playing card Objects. Cards have 
+ * a value (note that Ace = 1, Jack = 11, Queen = 12, King = 13)
+ * A suit (clubs, hearts, spades, diamonds).
+ * There are 52 cards in a deck, no jokers.
+ * This code is to be used in ICE1. When you create your own branch,
+ * add your name as a modifier.
  * @author dancye
- * @author Paul Bonenfant Jan 25, 2022 
+ * @author Paul Bonenfant May 2020
  */
+
+import java.util.Scanner;
+import java.util.Random;
+
 public class CardTrick {
-    
     public static void main(String[] args) {
-        
+
         Card[] hand = new Card[7];
+        Random random = new Random();
 
         for (int i = 0; i < hand.length; i++) {
-            Card card = new Card();
-            //card.setValue(insert call to random number generator here)
-            // 
-            //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
-            // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
-            //       Don't worry about duplicates at this point
+            hand[i] = new Card();
+            hand[i].setValue(random.nextInt(13) + 1);
+            hand[i].setSuit(Card.SUITS[random.nextInt(4)]);
         }
 
-        // insert code to ask the user for Card value and suit, create their card
-        // and search the hand here. 
-        // Hint: You can ask for values 1 to 10, and then
-        //       11 for jack, 12 for queen, etc. (remember arrays are 0-based though)
-        //       1 for Hearts, 2 for Diamonds, etc. (remember arrays are 0-based though)
-        // 
-        // Then loop through the cards in the array to see if there's a match.
-        
-        // If the guess is successful, invoke the printInfo() method below.
-        
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter the value of the card (1-13): ");
+        int value = scan.nextInt();
+        System.out.print("Enter the suit of the card (1 for Hearts, 2 for Diamonds, 3 for Spades, 4 for Clubs): ");
+        int suitIndex = scan.nextInt() - 1;
+        scan.close();
+        String suit = Card.SUITS[suitIndex];
+
+        boolean match = false;
+        for (int i = 0; i < hand.length; i++) {
+            if (hand[i].getValue() == value && hand[i].getSuit().equals(suit)) {
+                match = true;
+                break;
+            }
+        }
+
+        if (match) {
+
+            printInfo();
+        } else {
+            System.out.println("Sorry, you have choosen the wrong card");
+        }
     }
 
-    /**
-     * A simple method to print out personal information. Follow the instructions to 
-     * replace this information with your own.
-     * @author Paul Bonenfant Jan 2022
-     */
     private static void printInfo() {
-    
         System.out.println("Congratulations, you guessed right!");
         System.out.println();
-        
+
         System.out.println("My name is Paul, but you can call me prof, Paul or sir");
         System.out.println();
-        
+
         System.out.println("My career ambitions:");
         System.out.println("-- Be more active on LinkedIn");
         System.out.println("-- Have a semester with no violations of academic integrity!");
-	System.out.println();	
+        System.out.println();
 
         System.out.println("My hobbies:");
         System.out.println("-- Investing");
@@ -60,8 +70,6 @@ public class CardTrick {
         System.out.println("-- Riding my motorcycle");
 
         System.out.println();
-        
-    
     }
 
 }
