@@ -51,7 +51,7 @@ public class CardTrick {
         }
     }
     
-//  "I'm done!"
+//  "I'm done!!"
     private static void printInfo() 
     
     {
