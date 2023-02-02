@@ -10,12 +10,13 @@ package exercise1;
  * add your name as a modifier.
  * @author dancye
  * @author Paul Bonenfant May 2020
+ * @author Diya Sharma 1 Feb 2023
  */
 
 import java.util.Scanner;
 import java.util.Random;
 
-public class CardTrick {
+public class CardTrick{
     public static void main(String[] args) {
 
         Card[] hand = new Card[7];
